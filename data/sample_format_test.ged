@@ -1,0 +1,68 @@
+0 HEAD
+1 SOUR TestGEDCOM
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME John /Doe/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1900
+2 PLAC Anytown, Anyshire, USA, North America /* Might be flagged by strict place structure if not exactly matching 4 parts */
+0 @I2@ INDI
+1 NAME Jane Doe Smith  /* No slashes for surname */
+1 SEX F
+1 BIRT
+2 DATE ABT 15 FEB 1905
+2 PLAC Otherville, CA, USA
+1 DEAT
+2 DATE 2000-03-20
+2 PLAC Metro City
+0 @I3@ INDI
+1 NAME Missing // /* Empty surname part */
+1 BIRT
+2 DATE INVALID-DATE-FORMAT
+2 PLAC A, B, C, D, E, F ; /* Too many place parts for typical configs */
+0 @I4@ INDI
+1 NAME JustName /ActualSurname/
+1 BIRT
+2 DATE MAR 1950
+2 PLAC ValidSinglePartPlace
+0 @I5@ INDI
+1 NAME /JustSurnameOnly/
+1 BIRT
+2 DATE 30 FEB 1960 /* Invalid calendar date */
+0 @I6@ INDI
+1 NAME Date Tester /Family/
+1 BIRT
+2 DATE BET 1 MAR 1960 AND 5 MAR 1960
+2 PLAC DateRangeVille
+1 DEAT 
+2 DATE FROM 1990 TO 1992
+0 @I7@ INDI
+1 NAME Bad /BetDate/
+1 BIRT
+2 DATE BET JAN 1970 AND INVALIDPARTDATE
+0 @I8@ INDI
+1 NAME EmptySlashes / / Name
+1 BIRT
+2 DATE 1975
+0 @I9@ INDI
+1 NAME Questionable /Slash / Name /* Slash within surname part */
+1 BIRT
+2 DATE 01/01/2000
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 10/06/1925
+2 PLAC Anytown, Anyshire, USA
+1 DIV
+2 DATE BEF 1950
+2 PLAC Unknown Place Structure For Test
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 MARR
+2 DATE AROUND 1980 /* Non-standard prefix, will likely fail */
+0 TRLR
