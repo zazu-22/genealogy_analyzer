@@ -1,0 +1,37 @@
+{
+  "preferred_date_formats": [
+    "%d %b %Y",
+    "%Y-%m-%d",
+    "%b %Y",
+    "%Y",
+    "%d/%m/%Y"
+  ],
+  "expected_place_format_structures": [
+    "City, County, State, Country",
+    "City, State, Country",
+    "City, Country",
+    "State, Country",
+    "County, State",
+    "Country"
+  ],
+  "name_validation_rules": {
+    "enforce_surname_slashes": true
+  },
+  "key_events_requiring_source": [
+    "BIRT",
+    "DEAT",
+    "MARR"
+  ],
+  "weak_source_indicators": {
+    "titles": [
+      "Family Tree",
+      "GEDCOM import",
+      "Unverified"
+    ],
+    "missing_fields": [
+      "TITL",
+      "AUTH",
+      "PUBL"
+    ]
+  }
+}
